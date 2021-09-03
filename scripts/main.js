@@ -1,4 +1,7 @@
 const container = document.getElementById('container');
+const addBook = document.getElementById('addBook');
+const cancelButton = document.getElementById('cancel');
+const dialog = document.getElementById('dia');
 
 let myLibrary = [
     {
@@ -24,6 +27,7 @@ function addBookToLibrary () {
 
     myLibrary.push(new Book(title, author, pages, read));
     display();
+    resetForm();
 }
 
 function display() {
@@ -34,21 +38,31 @@ function display() {
         book.classList.add('details');
         book.innerHTML = `<div>Title: ${myLibrary[i].title}</div>
                           <div>Author: ${myLibrary[i].author}</div>
-                          <div>Pages: ${myLibrary[i].pages}</div>`;
+                          <div>Pages: ${myLibrary[i].pages}</div>
+                          <div>Have read?: ${myLibrary[i].read ? 'Yes' : 'No'}
+                          <br><button onclick='removeBook(${i})'> Remove </button>`;
         container.append(book);
     }
 }
 
-display();
+function removeBook(i) {
+	myLibrary.splice(i, 1);
+	display();
+}
 
-const addBook = document.getElementById('addBook');
-const cancelButton = document.getElementById('cancel');
-const dialog = document.getElementById('dia');
+function resetForm() {
+    document.getElementById('title').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('pages').value = '';
+    document.getElementById('read').checked = '';
+}
 
 addBook.addEventListener('click', function() {
     dialog.showModal();
 });
 
 cancelButton.addEventListener('click', function(){
-    dialog.close('canceled');
+    dialog.close('');
 });
+
+display();
