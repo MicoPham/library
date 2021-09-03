@@ -9,7 +9,7 @@ let myLibrary = [
     author: 'J.K. Rowling',
     pages: 223,
     read: true
-}
+    }
 ];
 
 function Book(title, author, pages, read) {
@@ -39,8 +39,8 @@ function display() {
         book.innerHTML = `<div>Title: ${myLibrary[i].title}</div>
                           <div>Author: ${myLibrary[i].author}</div>
                           <div>Pages: ${myLibrary[i].pages}</div>
-                          <div>Have read?: ${myLibrary[i].read ? 'Yes' : 'No'}
-                          <br><button onclick='removeBook(${i})'> Remove </button>`;
+                          <div>Have read?: <button onclick='toggle(${i})'>${myLibrary[i].read ? 'Yes' : 'No'} </button></div>
+                          <button onclick='removeBook(${i})'> Remove </button>`;
         container.append(book);
     }
 }
@@ -55,6 +55,15 @@ function resetForm() {
     document.getElementById('author').value = '';
     document.getElementById('pages').value = '';
     document.getElementById('read').checked = '';
+}
+
+function toggle(i) {
+    if (myLibrary[i].read) {
+        myLibrary[i].read = false;
+    } else {
+        myLibrary[i].read = true;
+    }
+    display();
 }
 
 addBook.addEventListener('click', function() {

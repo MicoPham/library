@@ -1,3 +1,7 @@
+h1 {
+    border-bottom: 3px solid lightgrey;
+}
+
 body {
     font-family: arial;
 }
