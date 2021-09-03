@@ -9,6 +9,21 @@
     <h1>Library</h1>
     <div id='container'>
     </div>
+    <form>
+      <label for="title">Title: 
+        <input type="text" id="title" required> 
+      </label>
+      <br><label for="author">Author:       
+        <input type="text" id="author" required>
+      </label>
+      <br><label for="pages">Pages:       
+        <input type="number" id="pages" required>
+      </label>
+      <br><label for="read">Have read?
+        <input type="checkbox" id="read" value="">
+      </label>
+      <br><button type="button" onclick="addBookToLibrary()">Add Book</button>
+    </form>
   </body>
   <script src="scripts/main.js"></script>    
 </html>
