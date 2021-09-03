@@ -2,17 +2,12 @@ const container = document.getElementById('container');
 
 let myLibrary = [
     {
-    title: '1',
-    author: '1',
-    pages: 1,
+    title: "Harry Potter and the Philosopher's Stone",
+    author: 'J.K. Rowling',
+    pages: 223,
     read: true
-},
-{
-    title: '2',
-    author: '2',
-    pages: 2,
-    read: true
-}];
+}
+];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -45,3 +40,15 @@ function display() {
 }
 
 display();
+
+const addBook = document.getElementById('addBook');
+const cancelButton = document.getElementById('cancel');
+const dialog = document.getElementById('dia');
+
+addBook.addEventListener('click', function() {
+    dialog.showModal();
+});
+
+cancelButton.addEventListener('click', function(){
+    dialog.close('canceled');
+});
